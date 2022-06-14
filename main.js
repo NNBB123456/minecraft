@@ -51,8 +51,8 @@ function my_keydown(e){
     }
     if(e.shiftKey == true && keyPressed == "77"){
         console.log("m and shift pressed together");
-        block_imagewidth = block_imagewidth + 10;
-        block_imageheight = block_imageheight + 10;
+        block_imagewidth = block_imagewidth - 10;
+        block_imageheight = block_imageheight - 10;
         document.getElementById("current_width").innerHTML = block_imagewidth;
         document.getElementById("current_height").innerHTML = block_imageheight;
     }
@@ -65,7 +65,7 @@ function my_keydown(e){
         console.log("down");
     }
     if(keyPressed == "39"){
-        rught();
+        right();
         console.log("right");
     }
     if(keyPressed == "37"){
@@ -109,4 +109,43 @@ function my_keydown(e){
         console.log("c");
     }
 
+}
+
+function up(){
+    if(player_y >=0){
+        player_y = player_y - block_imageheight;
+        console.log('block height =' + block_imageheight);
+        console.log('when up is pressed x =' + player_x, 'y =' + player_y);
+        canvas.remove(player_object);
+        player_uptdate();
+    }
+}
+
+function down(){
+    if(player_y <=500){
+        player_y = player_y + block_imageheight;
+        console.log('block height =' + block_imageheight);
+        console.log('when down is pressed x =' + player_x, 'y =' + player_y);
+        canvas.remove(player_object);
+        player_uptdate();
+    }
+}
+
+function left(){
+    if(player_x > 0){
+        player_x = player_x - block_imagewidth;
+        console.log('block width =' + block_imagewidth);
+        console.log('when left is pressed x =' + player_x, 'y =' + player_y);
+        canvas.remove(player_object);
+        player_uptdate();
+    }
+}
+function right(){
+    if(player_x <=850){
+        player_x = player_x + block_imagewidth;
+        console.log('block width =' + block_imagewidth);
+        console.log('when right is pressed x =' + player_x, 'y =' + player_y);
+        canvas.remove(player_object);
+        player_uptdate();
+    }
 }
